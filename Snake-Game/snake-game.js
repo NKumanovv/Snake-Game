@@ -1,7 +1,7 @@
 //board
 const blockSize = 25;
-const rows = 10;
-const cols = 15;
+const rows = 25;
+const cols = 25;
 let board;
 let context;
 

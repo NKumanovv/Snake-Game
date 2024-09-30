@@ -1,4 +1,37 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
+    background-color: #a19f89;
+}
+
+.container {
+    display: flex;
+    flex-grow: 1;
+}
+
+.settings {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: antiquewhite;
+
+}
+
+.input-box {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    margin: em;
+}
+
+label {
+    position: absolute;
 }
