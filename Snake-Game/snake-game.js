@@ -1,7 +1,7 @@
 //board
 const blockSize = 25;
-const rows = 30;
-const cols = 30;
+const rows = 10;
+const cols = 15;
 let board;
 let context;
 
@@ -18,6 +18,8 @@ let snakeBody = [];
 let foodX;
 let foodY;
 
+let isOver = false;
+
 window.onload = function() {
     board = document.getElementById("board");
     board.height = rows * blockSize;  
@@ -31,16 +33,16 @@ window.onload = function() {
 
 
 function changeDirection(e){
-    if(e.code == "ArrowUp"){
+    if(e.code == "ArrowUp" && velocityY != 1 ){
         velocityX = 0;
         velocityY = -1;
-    } else if(e.code == "ArrowDown"){
+    } else if(e.code == "ArrowDown" && velocityY != -1 ){
         velocityX = 0;
         velocityY = 1;
-    } else if(e.code == "ArrowLeft"){
+    } else if(e.code == "ArrowLeft"  && velocityX != 1 ){
         velocityX = -1;
         velocityY = 0;
-    } else if(e.code == "ArrowRight"){
+    } else if(e.code == "ArrowRight" && velocityX != -1 ){
         velocityX = 1;
         velocityY = 0;
     }
@@ -49,6 +51,10 @@ function changeDirection(e){
 }
 
 function update() {
+    if (isOver){
+        return;
+    }
+
     context.fillStyle = "black";
     context.fillRect(0, 0, board.width, board.height);
 
@@ -60,7 +66,7 @@ function update() {
         placeFood();
     }
     for (let i = snakeBody.length - 1; i > 0; i--) {
-        snakeBody[i] = snakeBody[i - 1] 
+        snakeBody[i] = snakeBody[i - 1];
     }
     if(snakeBody.length) {
         snakeBody[0] = [snakeHeadX, snakeHeadY];
@@ -75,6 +81,17 @@ function update() {
         
     }
 
+    if (snakeHeadX < 0 || snakeHeadX > (cols - 1) * blockSize || snakeHeadY < 0 || snakeHeadY > (rows - 1) * blockSize ) {
+        isOver = true;
+        alert("Game Over");
+    }
+
+    for (let i = 0; i < snakeBody.length - 1; i++) {
+        if (snakeHeadX == snakeBody[i][0] && snakeHeadY == snakeBody[i][1]) {
+            isOver = true;
+            alert("Game Over");
+        }
+    }
 }
 
 function placeFood(){
