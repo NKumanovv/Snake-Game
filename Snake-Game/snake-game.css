@@ -24,8 +24,15 @@ body {
 }
 
 .input-box {
-    margin: 0;
+    display: flex;
+    margin: 1em;
     padding: 0;
+    position: relative;
+}
+
+
+h1, h2 {
+    margin: 1em;
 }
 
 input {
@@ -34,4 +41,5 @@ input {
 
 label {
     position: absolute;
+    top: -1em;
 }
