@@ -7,20 +7,32 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
-    background-color: #a19f89;
+    background-color: #bebda3;
 }
 
 .container {
     display: flex;
     flex-grow: 1;
+    margin: 2em 0;
 }
 
 .settings {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    background-color: antiquewhite;
 
+    margin: 0 1em;
+    border: 1;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    background-color: antiquewhite;
+}
+
+#start-button {
+    margin: 1em 6em;
+    padding: 1em;
+    border-radius: 1em;
 }
 
 .input-box {
@@ -36,7 +48,8 @@ h1, h2 {
 }
 
 input {
-    margin: em;
+    width: 3em;
+    border-radius: 0.5em;
 }
 
 label {

@@ -20,7 +20,9 @@ let foodY;
 
 let isOver = false;
 
-window.onload = function() {
+
+let startButton = document.getElementById("start-button");
+startButton.addEventListener("click", function() {
     board = document.getElementById("board");
     board.height = rows * blockSize;  
     board.width = cols * blockSize;
@@ -28,9 +30,20 @@ window.onload = function() {
 
     placeFood();
     document.addEventListener("keydown",changeDirection);
-    setInterval(update, 1000/10);
-}
+    let gameInterval = setInterval(update, 1000/10);
 
+    reloadGameAttributes();
+
+});
+
+function reloadGameAttributes(){
+    isOver = false;
+    snakeBody = [];
+    snakeHeadX = blockSize * 3;
+    snakeHeadY = blockSize * 3;
+    velocityX = 0;
+    velocityY = 0;
+}
 
 function changeDirection(e){
     if(e.code == "ArrowUp" && velocityY != 1 ){
@@ -52,6 +65,7 @@ function changeDirection(e){
 
 function update() {
     if (isOver){
+        clearInterval(gameInterval);
         return;
     }
 
@@ -81,6 +95,11 @@ function update() {
         
     }
 
+    checkIfGameIsOver();
+}
+
+
+function checkIfGameIsOver () {
     if (snakeHeadX < 0 || snakeHeadX > (cols - 1) * blockSize || snakeHeadY < 0 || snakeHeadY > (rows - 1) * blockSize ) {
         isOver = true;
         alert("Game Over");
