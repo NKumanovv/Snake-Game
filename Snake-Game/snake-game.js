@@ -20,6 +20,7 @@ let foodY;
 
 let isOver = false;
 
+let gameInterval;
 
 let startButton = document.getElementById("start-button");
 startButton.addEventListener("click", function() {
@@ -30,7 +31,7 @@ startButton.addEventListener("click", function() {
 
     placeFood();
     document.addEventListener("keydown",changeDirection);
-    let gameInterval = setInterval(update, 1000/10);
+    gameInterval = setInterval(update, 100);
 
     reloadGameAttributes();
 
