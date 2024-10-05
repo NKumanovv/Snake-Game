@@ -29,6 +29,23 @@ body {
     background-color: antiquewhite;
 }
 
+.board-container {
+    display: flex;
+    padding: 2em;
+
+    margin: 0 1em 0 0;
+
+    border: 1;
+    border-radius: 1em;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    background-color: antiquewhite;
+
+}
+
+#board {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
 #start-button {
     margin: 1em 6em;
     padding: 1em;
@@ -44,7 +61,11 @@ body {
 
 
 h1, h2 {
-    margin: 1em;
+    margin: 0.4em;
+}
+
+h1 {
+    font-size: 3em;
 }
 
 input {

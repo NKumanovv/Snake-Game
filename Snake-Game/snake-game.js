@@ -1,7 +1,7 @@
 //board
 const blockSize = 25;
-const rows = 25;
-const cols = 25;
+const rows = 30;
+const cols = 60;
 let board;
 let context;
 
@@ -23,12 +23,17 @@ let isOver = false;
 let gameInterval;
 
 let startButton = document.getElementById("start-button");
-startButton.addEventListener("click", function() {
-    board = document.getElementById("board");
-    board.height = rows * blockSize;  
-    board.width = cols * blockSize;
-    context = board.getContext("2d");
 
+board = document.getElementById("board");
+board.height = rows * blockSize;  
+board.width = cols * blockSize;
+context = board.getContext("2d");
+
+context.fillStyle = "black";
+context.fillRect(0, 0, board.width, board.height);
+ 
+
+startButton.addEventListener("click", function() {
     placeFood();
     document.addEventListener("keydown",changeDirection);
     gameInterval = setInterval(update, 100);
@@ -103,13 +108,17 @@ function update() {
 function checkIfGameIsOver () {
     if (snakeHeadX < 0 || snakeHeadX > (cols - 1) * blockSize || snakeHeadY < 0 || snakeHeadY > (rows - 1) * blockSize ) {
         isOver = true;
-        alert("Game Over");
+        context.font = "100px serif";
+        context.strokeStyle = "red";
+        context.strokeText("Game Over", (cols/2-10)*blockSize, rows/2*blockSize);
     }
 
     for (let i = 0; i < snakeBody.length - 1; i++) {
         if (snakeHeadX == snakeBody[i][0] && snakeHeadY == snakeBody[i][1]) {
             isOver = true;
-            alert("Game Over");
+            context.font = "100px serif";
+            context.strokeStyle = "red";
+            context.strokeText("Game Over", (cols/2-10)*blockSize, rows/2*blockSize);
         }
     }
 }
