@@ -22,7 +22,17 @@ let isOver = false;
 
 let gameInterval;
 
+//score
+let maxScore = 0;
+let localScore = 0;
+
 let startButton = document.getElementById("start-button");
+let maxScoreElements = document.getElementsByClassName("max-score");
+let localScoreElements = document.getElementsByClassName("local-score");
+
+maxScoreElements.item(0).append(maxScore);
+localScoreElements.item(0).append(localScore);
+
 
 board = document.getElementById("board");
 board.height = rows * blockSize;  
@@ -49,6 +59,7 @@ function reloadGameAttributes(){
     snakeHeadY = blockSize * 3;
     velocityX = 0;
     velocityY = 0;
+    localScore = 0;
 }
 
 function changeDirection(e){
@@ -84,6 +95,7 @@ function update() {
     if (snakeHeadX == foodX && snakeHeadY == foodY){
         snakeBody.push([foodX, foodY]);
         placeFood();
+        localScore++;
     }
     for (let i = snakeBody.length - 1; i > 0; i--) {
         snakeBody[i] = snakeBody[i - 1];
@@ -101,6 +113,11 @@ function update() {
         
     }
 
+    if (localScore > maxScore) {
+        maxScore = localScore;
+    }
+    localScoreElements.item(0).textContent = "Local score: " + localScore;
+    maxScoreElements.item(0).textContent = "Max score: " + maxScore;
     checkIfGameIsOver();
 }
 

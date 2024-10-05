@@ -40,6 +40,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     background-color: antiquewhite;
 
+    position: relative;
 }
 
 #board {
@@ -76,4 +77,19 @@ input {
 label {
     position: absolute;
     top: -1em;
+}
+
+.rules {
+    text-align: left;
+    padding: 1em;
+}
+
+span {
+    position: absolute;
+    top: 1em;
+}
+
+
+.local-score {
+    left: 15em;
 }
